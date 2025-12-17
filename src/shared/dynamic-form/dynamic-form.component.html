@@ -1,0 +1,68 @@
+<div class="dyn-form" *ngIf="schema">
+  <!-- EXISTING FIELDS -->
+  <ng-container *ngFor="let f of schema.fields">
+    <div class="field-row">
+      <label class="field-label">
+        {{ f.label }}
+        <span *ngIf="f.required" class="required">*</span>
+      </label>
+
+      <ng-container [ngSwitch]="f.type">
+        <input *ngSwitchCase="'text'" class="input" [(ngModel)]="value[f.key]" [readonly]="readonly" (ngModelChange)="onValueChange()" />
+        <input *ngSwitchCase="'email'"  type="email" class="input" [(ngModel)]="value[f.key]" [readonly]="readonly" (ngModelChange)="onValueChange()" />
+        
+        <div *ngSwitchCase="'radio'" class="radio-group">  
+          <div *ngFor="let opt of f.options || []">
+            <input type="radio"  [name]="f.key"  [value]="opt.value"   [(ngModel)]="value[f.key]" [disabled]="readonly"  (ngModelChange)="onValueChange()"  />
+            {{ opt.label }}
+          </div>
+        </div>
+
+        <input  *ngSwitchCase="'number'" type="number"  class="input" [(ngModel)]="value[f.key]"  [readonly]="readonly"  (ngModelChange)="onValueChange()"/>
+
+        <textarea  *ngSwitchCase="'textarea'"  class="textarea"  [(ngModel)]="value[f.key]"  [readonly]="readonly"  (ngModelChange)="onValueChange()" ></textarea>
+
+        <select  *ngSwitchCase="'select'"  class="select"  [(ngModel)]="value[f.key]" [disabled]="readonly" (ngModelChange)="onValueChange()" >
+          <option *ngFor="let opt of f.options || []" [value]="opt">
+            {{ opt }}
+          </option>
+        </select>
+
+        <select *ngSwitchCase="'multiselect'" class="select" multiple [(ngModel)]="value[f.key]" [disabled]="readonly" (ngModelChange)="onValueChange()" >
+          <option *ngFor="let opt of f.options || []" [value]="opt">
+            {{ opt }}
+          </option>
+        </select>
+
+        <!-- DATE -->
+        <div *ngSwitchCase="'date'" class="date-wrapper">
+          <input class="input" type="text" placeholder="Pick a date" [(ngModel)]="value[f.key]" readonly (focus)="openCalendar(f.key)" />
+
+          <div class="calendar" *ngIf="openDateKey === f.key">
+            <input type="date" class="calendar-native" (change)="selectDate(f.key, $event)" />
+            <button class="close-btn" (click)="closeCalendar()">Close</button>
+          </div>
+        </div>
+
+        <div *ngSwitchCase="'checkbox'">
+          <label class="checkbox-label">
+            <input type="checkbox" [(ngModel)]="value[f.key]" [disabled]="readonly" (ngModelChange)="onValueChange()"  />
+            {{ f.label }}
+          </label>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+
+  <div class="attachments" *ngIf="previewAttachmentsOnly && validAttachments.length" >
+    <h4>Attachments</h4>
+
+    <ul>
+      <li *ngFor="let file of validAttachments">
+        <a [href]="file.url" target="_blank">
+          {{ file.name }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

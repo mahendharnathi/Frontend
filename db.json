@@ -1,0 +1,106 @@
+{
+  "templates": [
+    {
+      "id": "9443",
+      "name": "keerthana",
+      "body": "Hello World<div><br></div><div><a href=\"https://techatcore-my.sharepoint.com/:x:/r/personal/swathik_techatcore_com/_layouts/15/Doc.aspx\">Attendance Log.xlsx</a></div>",
+      "schema": {
+        "fields": [
+          {
+            "key": "1",
+            "label": "name",
+            "type": "text",
+            "required": true
+          },
+          {
+            "key": "2",
+            "label": "mobile no",
+            "type": "number",
+            "required": true
+          },
+          {
+            "key": "3",
+            "label": "DOB",
+            "type": "date",
+            "required": true
+          }
+        ]
+      },
+      "formValues": {
+        "1": "mahendhar",
+        "2": 234567890,
+        "3": "2025-12-03"
+      },
+      "attachments": [
+        {
+          "name": "Screenshot (20).png",
+          "url": "https://storage.example.com/Screenshot%20(20).png"
+        },
+        "https://storage.example.com/Screenshot%20(18).png"
+      ]
+    },
+    {
+      "id": "8682",
+      "name": "Govind",
+      "body": "helliiasbdfiu",
+      "schema": {
+        "fields": [
+          {
+            "key": "2",
+            "label": "dob",
+            "type": "date",
+            "required": true
+          },
+          {
+            "key": "3",
+            "label": "mobile no",
+            "type": "number",
+            "required": true
+          }
+        ]
+      },
+      "formValues": {},
+      "attachments": [
+        {
+          "name": "Screenshot (20).png",
+          "url": "https://storage.example.com/Screenshot%20(20).png"
+        },
+        "https://storage.example.com/Screenshot%20(20).png"
+      ]
+    },
+    {
+      "id": "f2a9",
+      "name": "Ajay",
+      "body": "hello ajay&nbsp;",
+      "schema": {
+        "fields": [
+          {
+            "key": "dfg",
+            "label": "ghj",
+            "type": "text",
+            "required": true
+          }
+        ]
+      },
+      "formValues": {
+        "dfg": "503001"
+      },
+      "attachments": [
+        "https://storage.example.com/Screenshot%20(20).png",
+        "https://storage.example.com/Screenshot%20(17).png"
+      ]
+    },
+    {
+      "id": "27d3",
+      "name": "mahi",
+      "body": "",
+      "schema": {
+        "fields": []
+      },
+      "attachments": [
+        "https://storage.example.com/Screenshot%20(19).png",
+        "https://storage.example.com/Screenshot%20(17).png"
+      ]
+    }
+  ]
+}

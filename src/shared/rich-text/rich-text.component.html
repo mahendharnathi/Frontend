@@ -1,0 +1,57 @@
+<div class="rt-container">
+
+  <!-- Mention Dropdown -->
+  <ul class="mention-box" *ngIf="showMention"[style.left.px]="mentionX"[style.top.px]="mentionY">
+    <li *ngFor="let user of filteredUsers; let i = index" [class.active]="i === activeIndex"(mousedown)="selectMention(user)">
+      {{ '@' + user }}
+    </li>
+  </ul>
+
+  <!-- Toolbar -->
+  <div class="rt-toolbar">
+
+    <button (click)="exec('bold')"><b>B</b></button>
+    <button (click)="exec('italic')"><i>I</i></button>
+    <button (click)="exec('underline')"><u>U</u></button>
+    <button (click)="exec('strikeThrough')"><s>S</s></button>
+
+    <span class="sep"></span>
+
+    <button (click)="exec('insertUnorderedList')">•</button>
+    <button (click)="exec('insertOrderedList')">1.</button>
+
+    <span class="sep"></span>
+
+    <button (click)="exec('outdent')">⇤</button>
+    <button (click)="exec('indent')">⇥</button>
+
+    <span class="sep"></span>
+
+    <button (click)="setSmall()">A</button>
+    <button (click)="setLarge()">AA</button>
+
+    <span class="sep"></span>
+
+    <button (click)="insertLink()">🔗</button>
+
+    <span class="sep"></span>
+
+    <button class="color-btn">
+      <span class="color-icon">A</span>
+      <input type="color" class="color-picker" (input)="setColor($event)" />
+    </button>
+
+    <span class="sep"></span>
+
+    <button (click)="undo()">↺</button>
+    <button (click)="redo()">↻</button>
+
+    <span class="sep"></span>
+
+    <button class="trash" (click)="clear()">🗑</button>
+  </div>
+
+  <!-- Editable Area -->
+  <div #editor class="rt-editor"contenteditable="true"(input)="onInput()" (keyup)="onKeyUp($event)"></div>
+
+</div>

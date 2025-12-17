@@ -1,0 +1,45 @@
+<div class="preview-page">
+
+  <!-- HEADER -->
+  <div class="preview-header">
+    <h2>Template Preview</h2>
+    <button class="btn preview btn-primary" (click)="backtoedit()">
+      Back
+    </button>
+  </div>
+
+  <!-- LOADING -->
+  <div *ngIf="loading" class="loading">
+    Loading preview…
+  </div>
+
+  <!-- CONTENT -->
+  <div *ngIf="!loading">
+
+    <!-- TEMPLATE NAME -->
+    <h3>{{ template.name }}</h3>
+
+    <!-- TEMPLATE BODY -->
+    <div class="body" [innerHTML]="template.body"></div>
+
+    <hr />
+
+    <!-- FORM + ATTACHMENTS PREVIEW -->
+    <div *ngIf="template.schema?.fields?.length > 0">
+      <h4>Form Preview</h4>
+
+
+     <app-dynamic-form
+  [schema]="template.schema"
+  [value]="template.formValues"
+  [attachments]="template.attachments"
+  [readonly]="true"
+  [previewAttachmentsOnly]="true">
+</app-dynamic-form>
+
+
+    </div>
+
+  </div>
+
+</div>

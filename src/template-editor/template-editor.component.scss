@@ -1,0 +1,120 @@
+/* PAGE WRAPPER */
+:host {
+    display: block;
+    padding: 40px;
+    background: #f4f6f9;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ==============================
+   HEADER WITH BUTTONS
+============================== */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.header-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    transition: 0.2s ease;
+}
+
+.btn.publish {
+    background: #4458ff;
+    color: white;
+}
+
+.btn.publish:hover {
+    background: #2f3fde;
+}
+
+.btn.preview {
+    background: #fff;
+    border: 1px solid #d6d6d6;
+}
+
+.btn.preview:hover {
+    background: #f2f2f2;
+}
+
+/* Subtitle */
+.sub-title {
+    margin-top: 8px;
+    color: #6b7280;
+    margin-bottom: 25px;
+}
+
+/* ==============================
+   GRID LAYOUT
+============================== */
+
+.editor-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 32px;
+}
+
+/* LEFT + RIGHT COLUMNS */
+.left-column,
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Cards */
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.card h3 {
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Attachments list */
+.attachment-list {
+    margin-top: 12px;
+    padding: 0;
+    list-style: none;
+}
+
+.attachment-list li {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed #ddd;
+    margin-bottom: 8px;
+}
+
+.remove {
+    background: none;
+    border: none;
+    color: #d13232;
+    cursor: pointer;
+    font-size: 16px;
+}

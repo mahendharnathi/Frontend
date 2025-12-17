@@ -1,0 +1,32 @@
+<div class="schema-wrapper">
+  <div class="row">
+    <input placeholder="key" [(ngModel)]="newField.key" />
+    <input placeholder="label" [(ngModel)]="newField.label" />
+
+    <select [(ngModel)]="newField.type">
+      <option value="text">Text</option>
+      <option value="textarea">Textarea</option>
+      <option value="number">Number</option>
+      <option value="email">Email</option>
+      <option value="date">Date</option>
+      <option value="checkbox">Checkbox</option>
+      <option value="select">Select (Dropdown)</option>
+      <option value="radio">Radio</option>
+    </select>
+
+    <label class="req">
+      <input type="checkbox" [(ngModel)]="newField.required" /> required
+    </label>
+
+    <button class="add-btn" (click)="addField()">Add</button>
+  </div>
+
+  <div class="list">
+    <div class="item" *ngFor="let f of fields; let i = index">
+      <strong>{{ f.label }}</strong> ({{ f.key }}) — {{ f.type }}
+      <span *ngIf="f.required" class="req-badge">required</span>
+
+      <button class="remove" (click)="removeField(i)">Remove</button>
+    </div>
+  </div>
+</div>
