@@ -4,38 +4,30 @@
   <div class="header-actions">
     <button class="btn publish" (click)="publish()">Publish</button>
     <button class="btn preview" (click)="preview()">Preview</button>
-      <button class="btn preview" (click)="backtotemplate()">back</button>
+    <button class="btn preview" (click)="backtotemplate()">back</button>
   </div>
 </div>
 
 <!-- <p class="sub-title">Edit template body, fields & attachments</p> -->
 
 <div class="editor-layout">
-  
   <!-- LEFT SIDE -->
   <div class="left-column">
     <div class="card">
       <h3>Template Body</h3>
 
-      <app-rich-text
-        [(content)]="editorContent"
-        (contentChange)="onEditorChange($event)">
+      <app-rich-text [(content)]="editorContent"(contentChange)="onEditorChange($event)">
       </app-rich-text>
     </div>
-     <div class="card">
+    <div class="card">
       <h3>Form Fields</h3>
-      <app-dynamic-form
-        [schema]="template?.schema"
-        [(value)]="formValues">
+      <app-dynamic-form [schema]="template?.schema" [(value)]="formValues">
       </app-dynamic-form>
     </div>
   </div>
 
   <!-- RIGHT SIDE -->
   <div class="right-column">
-
-   
-
     <div class="card">
       <h3>Attachments</h3>
 
@@ -51,12 +43,8 @@
 
     <div class="card">
       <h3>Schema Builder</h3>
-      <app-schema-builder
-        [fields]="template?.schema?.fields"
-        (fieldsChange)="onSchemaChange($event)">
+      <app-schema-builder [fields]="template?.schema?.fields"(fieldsChange)="onSchemaChange($event)" >
       </app-schema-builder>
     </div>
-
   </div>
-
 </div>

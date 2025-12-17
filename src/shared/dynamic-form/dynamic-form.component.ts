@@ -46,11 +46,11 @@ export class DynamicFormComponent {
     })
     .filter((item): item is { name: string; url: string } => item !== null);
 }
+onValueChange() {
+  this.valueChange.emit(this.value);
+}
 
-
-  onValueChange() {
-    this.valueChange.emit(this.value);
-  }
+ 
 
   openCalendar(key: string) {
     this.openDateKey = key;

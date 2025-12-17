@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CommonModule,Location } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { CommonModule, Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 import { TemplateService, TemplateModel } from '../services/template.service';
 import { DynamicFormComponent } from '../shared/dynamic-form/dynamic-form.component';
 
@@ -12,9 +12,9 @@ import { DynamicFormComponent } from '../shared/dynamic-form/dynamic-form.compon
   styleUrls: ['./template-preview.component.scss']
 })
 export class TemplatePreviewComponent implements OnInit {
+
   @Input() readonly = false;
   @Input() showAttachments = true;
-  attachments: { name: string; url: string }[] = [];
 
   template!: TemplateModel;
   loading = true;
@@ -22,8 +22,8 @@ export class TemplatePreviewComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private ts: TemplateService,
-    private location:Location
-  ) { }
+    private location: Location
+  ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')!;
@@ -39,10 +39,42 @@ export class TemplatePreviewComponent implements OnInit {
     });
   }
 
-  backtoedit(){
-    
+  backtoedit() {
     this.location.back();
-
-
   }
+
+  /** 🔥 INTERPOLATION LOGIC */
+ getInterpolatedBody(): string {
+  if (!this.template?.body) return '';
+
+  let body = this.template.body;
+  const values = this.template.formValues || {};
+  const fields = this.template.schema?.fields || [];
+
+  fields.forEach((field: any) => {
+    const key = field.key;
+    const label = field.label;
+    const value = values[key] ?? '';
+
+    // {{label}}
+    body = body.replace(
+      new RegExp(`{{\\s*${label}\\s*}}`, 'gi'),
+      value
+    );
+
+    // @label
+    body = body.replace(
+      new RegExp(`@${label}\\b`, 'gi'),
+      value
+    );
+
+    // {{key}} (optional support)
+    body = body.replace(
+      new RegExp(`{{\\s*${key}\\s*}}`, 'gi'),
+      value
+    );
+  });
+
+  return body;
+}
 }

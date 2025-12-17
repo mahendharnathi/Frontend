@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TemplateService, TemplateModel } from '../services/template.service';
 import { FileUploadComponent } from '../shared/file-upload/file-upload.component';
 import { SchemaBuilderComponent } from '../shared/schema-builder/schema-builder.component';
-import { DynamicFormComponent } from "../shared/dynamic-form/dynamic-form.component";
+import { DynamicFormComponent } from '../shared/dynamic-form/dynamic-form.component';
 import { RichTextComponent } from '../shared/rich-text/rich-text.component';
 
 @Component({
@@ -20,11 +20,10 @@ import { RichTextComponent } from '../shared/rich-text/rich-text.component';
     RichTextComponent,
     FileUploadComponent,
     SchemaBuilderComponent,
-    DynamicFormComponent
+    DynamicFormComponent,
   ],
 })
 export class TemplateEditorComponent implements OnInit {
-
   template!: TemplateModel;
   editorContent = '';
   formValues: any = {};
@@ -34,12 +33,12 @@ export class TemplateEditorComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private ts: TemplateService
-  ) { }
+  ) {}
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get("id")!;
+    const id = this.route.snapshot.paramMap.get('id')!;
 
-    this.ts.getOne(id).subscribe(t => {
+    this.ts.getOne(id).subscribe((t) => {
       this.template = t;
 
       // Load body
@@ -74,38 +73,43 @@ export class TemplateEditorComponent implements OnInit {
       ...this.template,
       body: this.editorContent,
       formValues: this.formValues,
-      attachments: this.template.attachments
+      attachments: this.template.attachments,
     };
 
     this.ts.updateTemplate(this.template.id, updated).subscribe(() => {
-      alert("Template updated successfully!");
+      alert('Template updated successfully!');
     });
   }
 
   // Open preview
   preview() {
-    this.router.navigate(
-      ['/templates', this.template.id, 'preview'],
-      { state: { template: this.template } }
-    );
+    this.router.navigate(['/templates', this.template.id, 'preview'], {
+      state: { template: this.template },
+    });
   }
 
   // File upload
   onUploaded(url: string) {
     this.template.attachments.push(url);
 
-    this.ts.updateTemplate(this.template.id, {
-      attachments: this.template.attachments
-    }).subscribe();
+    this.ts
+      .updateTemplate(this.template.id, {
+        attachments: this.template.attachments,
+      })
+      .subscribe();
   }
 
   // Remove file
   removeAttachment(url: string) {
-    this.template.attachments = this.template.attachments.filter((a: string) => a !== url);
+    this.template.attachments = this.template.attachments.filter(
+      (a: string) => a !== url
+    );
 
-    this.ts.updateTemplate(this.template.id, {
-      attachments: this.template.attachments
-    }).subscribe();
+    this.ts
+      .updateTemplate(this.template.id, {
+        attachments: this.template.attachments,
+      })
+      .subscribe();
   }
 
   // Called when schema builder updates fields
@@ -120,16 +124,15 @@ export class TemplateEditorComponent implements OnInit {
   cleanFormValues() {
     if (!this.template?.schema?.fields) return;
 
-    const allowedKeys = this.template.schema.fields.map(f => f.key);
+    const allowedKeys = this.template.schema.fields.map((f) => f.key);
 
-    Object.keys(this.formValues).forEach(key => {
+    Object.keys(this.formValues).forEach((key) => {
       if (!allowedKeys.includes(key)) {
         delete this.formValues[key];
       }
     });
   }
-  backtotemplate(){
+  backtotemplate() {
     this.router.navigate(['/templates']);
-
   }
 }

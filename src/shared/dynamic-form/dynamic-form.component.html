@@ -1,5 +1,6 @@
 <div class="dyn-form" *ngIf="schema">
 
+  <!-- ================= FIELDS ================= -->
   <div *ngFor="let field of schema.fields" class="field-row">
 
     <label class="field-label">
@@ -7,108 +8,73 @@
       <span *ngIf="field.required" class="required">*</span>
     </label>
 
-    <!-- ================= PREVIEW MODE ================= -->
+    <!-- PREVIEW MODE -->
     <div *ngIf="readonly" class="preview-value">
       {{ value?.[field.key] || '-' }}
     </div>
 
-    <!-- ================= EDIT MODE ================= -->
+    <!-- EDIT MODE -->
     <ng-container *ngIf="!readonly">
 
-      <!-- TEXT -->
-      <input
-        *ngIf="field.type === 'text'"
+      <input *ngIf="field.type === 'text'"
         type="text"
         class="input"
         [(ngModel)]="value[field.key]"
-      />
+        (ngModelChange)="onValueChange()" />
 
-      <!-- NUMBER -->
-      <input
-        *ngIf="field.type === 'number'"
+      <input *ngIf="field.type === 'number'"
         type="number"
         class="input"
         [(ngModel)]="value[field.key]"
-      />
+        (ngModelChange)="onValueChange()" />
 
-      <!-- EMAIL -->
-      <input
-        *ngIf="field.type === 'email'"
+      <input *ngIf="field.type === 'email'"
         type="email"
         class="input"
         [(ngModel)]="value[field.key]"
-      />
+        (ngModelChange)="onValueChange()" />
 
-      <!-- TEXTAREA -->
-      <textarea
-        *ngIf="field.type === 'textarea'"
+      <textarea *ngIf="field.type === 'textarea'"
         class="textarea"
-        [(ngModel)]="value[field.key]">
-      </textarea>
+        [(ngModel)]="value[field.key]"
+        (ngModelChange)="onValueChange()"></textarea>
 
-      <!-- DATE -->
-      <input
-        *ngIf="field.type === 'date'"
+      <input *ngIf="field.type === 'date'"
         type="date"
         class="input"
         [(ngModel)]="value[field.key]"
-      />
+        (ngModelChange)="onValueChange()" />
 
-      <!-- CHECKBOX -->
-      <!-- <div *ngIf="field.type === 'checkbox'" class="checkbox-wrapper">
-        <input
-          type="checkbox"
-          [(ngModel)]="value[field.key]"
-        />
-      </div> -->
-    <div *ngIf="field.type === 'checkbox'" class="checkbox-row">
-  <label class="checkbox-label">
-    <input
-      type="checkbox"
-      [(ngModel)]="value[field.key]"
-    />
-    <span>
-      {{ field.label }}
-      <span *ngIf="field.required" class="required">*</span>
-    </span>
-  </label>
-</div>
+      <div *ngIf="field.type === 'checkbox'" class="checkbox-row">
+        <label>
+          <input type="checkbox"
+            [(ngModel)]="value[field.key]"
+            (ngModelChange)="onValueChange()" />
+          {{ field.label }}
+        </label>
+      </div>
 
-      <!-- SELECT / DROPDOWN -->
-      <select
-        *ngIf="field.type === 'select'"
+      <select *ngIf="field.type === 'select'"
         class="input"
         [(ngModel)]="value[field.key]"
-      >
+        (ngModelChange)="onValueChange()">
         <option value="">Select</option>
         <option *ngFor="let opt of field.options" [value]="opt">
           {{ opt }}
         </option>
       </select>
 
-      <!-- RADIO -->
-      <div *ngIf="field.type === 'radio'" class="radio-group">
-        <label *ngFor="let opt of field.options" class="radio-option">
-          <input
-            type="radio"
-            [name]="field.key"
-            [value]="opt"
-            [(ngModel)]="value[field.key]"
-          />
-          {{ opt }}
-        </label>
-      </div>
-
     </ng-container>
-
   </div>
 
   <!-- ================= ATTACHMENTS ================= -->
-  <div *ngIf="attachments?.length && (readonly || !previewAttachmentsOnly)">
+  <div *ngIf="validAttachments.length && readonly" class="attachments">
     <h4>Attachments</h4>
-    <ul>
-      <li *ngFor="let file of attachments">
-        <a [href]="file.url" target="_blank">{{ file.name }}</a>
+    <ul class="attachment-list">
+      <li *ngFor="let file of validAttachments">
+        <a [href]="file.url" target="_blank">
+          {{ file.name }}
+        </a>
       </li>
     </ul>
   </div>

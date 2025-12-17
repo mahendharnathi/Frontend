@@ -32,7 +32,7 @@
     {
       "id": "f2a9",
       "name": "Ajay",
-      "body": "hello ajay&nbsp;",
+      "body": "hello ajay @name {{name}} {{1}} {{2}}",
       "schema": {
         "fields": [
           {
@@ -74,8 +74,8 @@
         "dfg": "503001"
       },
       "attachments": [
-        "https://storage.example.com/Screenshot%20(20).png",
-        "https://storage.example.com/Screenshot%20(17).png"
+        "https://storage.example.com/Screenshot%20(17).png",
+        "https://storage.example.com/Screenshot%20(65).png"
       ]
     },
     {
@@ -89,6 +89,81 @@
         "https://storage.example.com/Screenshot%20(19).png",
         "https://storage.example.com/Screenshot%20(17).png"
       ]
+    },
+    {
+      "id": "4e98",
+      "name": "Employee Joining order",
+      "body": "<p data-start=\"323\" data-end=\"350\"><font size=\"2\">Dear <strong data-start=\"328\" data-end=\"349\">{{employee_name}}</strong>,</font></p>\n<p data-start=\"352\" data-end=\"556\"><font size=\"2\">With reference to your application and subsequent interview, we are pleased to inform you that you have been selected for the position of <strong data-start=\"490\" data-end=\"509\">{{designation}}</strong> in <strong data-start=\"513\" data-end=\"531\">{{department}}</strong> at <b>tac</b></font></p>\n<p data-start=\"558\" data-end=\"634\"><font size=\"2\">You are hereby directed to <strong data-start=\"585\" data-end=\"598\">join duty</strong> as per the details mentioned below:</font></p>\n<h3 data-start=\"641\" data-end=\"664\"><strong data-start=\"645\" data-end=\"664\"><font size=\"2\">Joining Details</font></strong></h3>\n<ul data-start=\"666\" data-end=\"1030\">\n<li data-start=\"666\" data-end=\"706\">\n<p data-start=\"668\" data-end=\"706\"><font size=\"2\"><strong data-start=\"668\" data-end=\"686\">Employee Name:</strong> {{employee_name}}</font></p>\n</li>\n<li data-start=\"707\" data-end=\"743\">\n<p data-start=\"709\" data-end=\"743\"><font size=\"2\"><strong data-start=\"709\" data-end=\"725\">Employee ID:</strong> {{employee_id}}</font></p>\n</li>\n<li data-start=\"744\" data-end=\"780\">\n<p data-start=\"746\" data-end=\"780\"><font size=\"2\"><strong data-start=\"746\" data-end=\"762\">Designation:</strong> {{designation}}</font></p>\n</li>\n<li data-start=\"781\" data-end=\"815\">\n<p data-start=\"783\" data-end=\"815\"><font size=\"2\"><strong data-start=\"783\" data-end=\"798\">Department:</strong> {{department}}</font></p>\n</li>\n<li data-start=\"816\" data-end=\"857\">\n<p data-start=\"818\" data-end=\"857\"><font size=\"2\"><strong data-start=\"818\" data-end=\"838\">Date of Joining:</strong> {{joining_date}}</font></p></li>\n<li data-start=\"901\" data-end=\"944\">\n<p data-start=\"903\" data-end=\"944\"><font size=\"2\"><strong data-start=\"903\" data-end=\"920\">Reporting To:</strong> {{reporting_manager}}</font></p>\n</li>\n<li data-start=\"945\" data-end=\"985\">\n<p data-start=\"947\" data-end=\"985\"><font size=\"2\"><strong data-start=\"947\" data-end=\"965\">Work Location:</strong> {{work_location}}</font></p></li></ul>\n<h3 data-start=\"1037\" data-end=\"1063\"><strong data-start=\"1041\" data-end=\"1063\"><font size=\"2\">Terms &amp; Conditions</font></strong></h3>\n<ol data-start=\"1065\" data-end=\"1499\">\n<li data-start=\"1065\" data-end=\"1178\">\n<p data-start=\"1068\" data-end=\"1178\"><font size=\"2\">Your appointment will be governed by the terms and conditions mentioned in the <strong data-start=\"1147\" data-end=\"1163\">Offer Letter</strong> issued to you.</font></p>\n</li>\n<li data-start=\"1179\" data-end=\"1273\">\n<p data-start=\"1182\" data-end=\"1273\"><font size=\"2\">You are required to submit all necessary documents for verification at the time of joining.</font></p>\n</li>\n<li data-start=\"1274\" data-end=\"1385\">\n<p data-start=\"1277\" data-end=\"1385\"><font size=\"2\">Your employment will be subject to company policies, rules, and regulations as applicable from time to time.</font></p>\n</li>\n<li data-start=\"1386\" data-end=\"1499\">\n<p data-start=\"1389\" data-end=\"1499\"><font size=\"2\">Failure to join on the specified date without prior approval may result in cancellation of this joining order</font></p></li>\n</ol>\n<p data-start=\"1506\" data-end=\"1615\"><font size=\"2\">You are requested to acknowledge the receipt of this joining order and report for duty on the mentioned date.</font></p>\n<p data-start=\"1617\" data-end=\"1697\"><font size=\"2\">We welcome you to<b> techatcore</b>&nbsp;and wish you a successful career with us.</font></p><p data-start=\"1617\" data-end=\"1697\"><font size=\"2\"><br></font></p>\n<p data-start=\"1704\" data-end=\"1728\"><strong data-start=\"1704\" data-end=\"1728\"><font size=\"2\">For&nbsp; tech at core</font></strong></p><p data-start=\"1737\" data-end=\"1875\"><font size=\"2\"><strong data-start=\"1770\" data-end=\"1794\">Authorized Signatory</strong><br data-start=\"1794\" data-end=\"1797\">\n<strong data-start=\"1797\" data-end=\"1813\">Designation:</strong> {{</font><span style=\"font-size: small;\">designation</span><span style=\"font-size: small;\">}}</span></p><p data-start=\"1737\" data-end=\"1875\"><font size=\"2\">\n<strong data-start=\"1843\" data-end=\"1855\">Contact:</strong> {{contact_details}}</font></p>\n<h3 data-start=\"1882\" data-end=\"1905\"><strong data-start=\"1886\" data-end=\"1905\"><font size=\"2\">Acknowledgement</font></strong></h3>\n<p data-start=\"1907\" data-end=\"2034\"><font size=\"2\">I, <strong data-start=\"1910\" data-end=\"1931\">{{employee_name}}</strong>, acknowledge receipt of this joining order and agree to join the organization on <strong data-start=\"2013\" data-end=\"2033\">{{joining_date}}</strong>.</font></p><br><p data-start=\"2043\" data-end=\"2126\"><font size=\"2\"><strong data-start=\"2043\" data-end=\"2066\">Employee Signature:</strong> _______________________<br data-start=\"2090\" data-end=\"2093\">\n<strong data-start=\"2093\" data-end=\"2102\">Date:</strong><span data-start=\"2093\" data-end=\"2102\">{{date}}</span></font></p>",
+      "schema": {
+        "fields": [
+          {
+            "key": "1",
+            "label": "employee_name",
+            "type": "text",
+            "required": true
+          },
+          {
+            "key": "2",
+            "label": "designation",
+            "type": "text",
+            "required": true
+          },
+          {
+            "key": "3",
+            "label": "department",
+            "type": "text",
+            "required": true
+          },
+          {
+            "key": "4",
+            "label": "employee_id",
+            "type": "number",
+            "required": true
+          },
+          {
+            "key": "5",
+            "label": "joining_date",
+            "type": "date",
+            "required": false
+          },
+          {
+            "key": "8",
+            "label": "work_location",
+            "type": "textarea",
+            "required": false
+          },
+          {
+            "key": "9",
+            "label": "contact_details",
+            "type": "number",
+            "required": false
+          },
+          {
+            "key": "10 ",
+            "label": "date",
+            "type": "date",
+            "required": true
+          },
+          {
+            "key": "7",
+            "label": "reporting_manager",
+            "type": "text",
+            "required": true
+          }
+        ]
+      },
+      "attachments": [],
+      "formValues": {
+        "1": "Mahendhar",
+        "2": "Software Engineer",
+        "3": "Technology Department",
+        "4": 1234487623458,
+        "5": "2026-01-03",
+        "7": "Sranaya ",
+        "8": " Nizamabad ",
+        "9": 23456789765,
+        "10 ": "2025-12-12"
+      }
     }
   ]
 }
